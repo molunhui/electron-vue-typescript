@@ -3,7 +3,6 @@ var path = require('path')
 var env = process.env.ENV || 'dev'
 
 const web = process.env.BUILD_TARGET === 'web'
-console.log(web)
 
 module.exports = {
   build: {

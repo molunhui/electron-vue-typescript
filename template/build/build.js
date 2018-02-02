@@ -18,10 +18,9 @@ const packager = require('electron-packager')
 const { spawn } = require('child_process')
 {{/if_eq}}
 
-{{#if_eq builder 'packager'}}const buildConfig = require('./build.config'){{/if_eq}}
+{{#if_eq builder 'packager'}}const buildConfig = require('./electron.config'){{/if_eq}}
 
 var config = require('./config')
-var buildConfig = require('./electron.config')
 var webpackConfig = require('./webpack.prod.conf')
 var mainConfig = require('./webpack.main.conf')
 
