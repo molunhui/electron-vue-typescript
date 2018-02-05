@@ -1,6 +1,4 @@
-{{#ie}}
 import 'vue-svgicon/dist/polyfill'
-{{/ie}}
 import Vue from 'vue'
 
 // register plugins hooks fo vue component
@@ -11,9 +9,7 @@ import * as svgicon from 'vue-svgicon'
 import 'components/icons'
 
 import router from 'router'
-{{#vuex}}
 import store from 'store'
-{{/vuex}}
 
 import App from 'components/pages/app'
 
@@ -23,11 +19,17 @@ Vue.use(svgicon, {
     tagName: 'icon'
 })
 
+// electron
+if (process.env.NODE_ENV !== 'development' && process.env.BUILD_TARGET !== 'web') {
+    global.__static = './static'
+} else {
+    global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
+}
+
 new Vue({
     el: '#app',
     router,
-    {{#vuex}}
     store,
-    {{/vuex}}
     render: h => h(App)
 })
+declare var require: NodeRequire;

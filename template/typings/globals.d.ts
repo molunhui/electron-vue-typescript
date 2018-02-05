@@ -6,6 +6,12 @@ interface NodeRequire {
     ensure(paths: string[], callback: (require) => void, errorCallback?: (err) => void, chunkName?: string): void
 }
 
+declare namespace NodeJS {
+    export interface Global {
+        __static: string
+    }
+}
+
 /**
  * md5
  */
